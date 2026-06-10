@@ -4,7 +4,7 @@ android-compileSdk = "36"
 android-minSdk = "24"
 android-targetSdk = "36"
 composeMultiplatform = "1.11.1"
-kotlin = "2.4.0"
+kotlin = "2.3.21"
 skie = "0.10.12"
 
 #New

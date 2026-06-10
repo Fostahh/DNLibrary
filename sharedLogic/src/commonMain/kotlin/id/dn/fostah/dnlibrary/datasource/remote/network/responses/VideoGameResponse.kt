@@ -1,7 +1,13 @@
-package id.dn.fostah.dnlibrary.network.responses
+package id.dn.fostah.dnlibrary.datasource.remote.network.responses
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+
+@Serializable
+data class ListVideoGameResponse(
+    @SerialName("results")
+    val results: List<VideoGameResponse>
+)
 
 @Serializable
 data class VideoGameResponse(
