@@ -7,21 +7,21 @@ import kotlinx.serialization.json.Json
 import kotlin.concurrent.Volatile
 
 
-data class NetworkManagerConfig(
+data class DNNetworkManagerConfig(
     val baseUrl: String,
     val apiKey: String
 )
-class NetworkManager private constructor(val config: NetworkManagerConfig) {
+class DNNetworkManager private constructor(val config: DNNetworkManagerConfig) {
 
     companion object {
         @Volatile
-        private var instance: NetworkManager? = null
+        private var instance: DNNetworkManager? = null
 
-        fun initialize(config: NetworkManagerConfig): NetworkManager {
-            return instance ?: NetworkManager(config).also { instance = it }
+        fun initialize(config: DNNetworkManagerConfig): DNNetworkManager {
+            return instance ?: DNNetworkManager(config).also { instance = it }
         }
 
-        fun getInstance(): NetworkManager {
+        fun getInstance(): DNNetworkManager {
             return instance ?: error("NetworkManager not initialized.")
         }
     }

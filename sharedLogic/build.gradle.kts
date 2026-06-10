@@ -10,6 +10,11 @@ plugins {
 
 kotlin {
 
+    compilerOptions {
+        // expect/actual classes (used for LocalDataSource) still emit a Beta warning without this
+        freeCompilerArgs.add("-Xexpect-actual-classes")
+    }
+
     // iOS
     val xcframeworkName = "DNLibrary"
     val xcframework = XCFramework(xcframeworkName)
@@ -48,6 +53,9 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
 
+            // Coroutines (suspend/Flow API surface)
+            implementation(libs.kotlinx.coroutines)
+
             // Main Ktor dependency
             implementation(libs.ktor.client.core)
 
@@ -61,6 +69,9 @@ kotlin {
         androidMain.dependencies {
             // Provides the Android engine for Ktor
             implementation(libs.ktor.client.android)
+
+            // Backs LocalDataSource on Android
+            implementation(libs.androidx.datastore.preferences)
         }
         iosMain.dependencies {
             // Provides the Darwin engine for Ktor
